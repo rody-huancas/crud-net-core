@@ -22,6 +22,9 @@ namespace CURDCORE.Controllers
         [HttpPost]
         public IActionResult Guardar(ContactoModel oContacto)
         {
+            if (!ModelState.IsValid)
+                return View();
+
             var respuesta = _ContactoDatos.Guardar(oContacto);
 
             if (respuesta)
